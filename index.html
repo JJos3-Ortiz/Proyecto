@@ -61,9 +61,10 @@
             text-decoration: none;
             font-size: 0.9rem;
             text-align: right;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
             padding-right: 2rem;
+            font-weight: 500;
         }
 
         nav a::after {
@@ -76,26 +77,67 @@
             height: 8px;
             border: 2px solid #666;
             border-radius: 50%;
-            transition: all 0.3s;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            right: 4px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            background: rgba(0, 255, 136, 0.2);
+            border-radius: 50%;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         nav a:hover {
             color: #00ff88;
+            transform: translateX(-5px);
         }
 
         nav a:hover::after {
             background: #00ff88;
             border-color: #00ff88;
             width: 20px;
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+        }
+
+        nav a:hover::before {
+            width: 30px;
+            height: 30px;
         }
 
         nav a.active {
             color: #00ff88;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
         nav a.active::after {
             background: #00ff88;
             border-color: #00ff88;
+            width: 25px;
+            height: 4px;
+            border-radius: 2px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            animation: pulse 2s infinite;
+        }
+
+        nav a.active::before {
+            width: 35px;
+            height: 35px;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 0 20px rgba(0, 255, 136, 0.8);
+            }
+            50% {
+                box-shadow: 0 0 30px rgba(0, 255, 136, 1);
+            }
         }
 
         /* Logo flotante */
@@ -515,15 +557,17 @@
     </style>
 </head>
 <body>
-<div class="logo">
-    <img src="IMG/logo-1.png" alt="Logo" style="height: 70px; width: auto; margin-right: 15px; vertical-align: middle;">
-    <span style="vertical-align: middle; font-size: 2rem;">NEXUS</span>
-</div>
+    <div class="particles" id="particles"></div>
+    
+    <div class="logo">
+        <img src="IMG/logo-1.png" alt="Logo" style="height: 50px; width: auto; margin-right: 15px; vertical-align: middle;">
+        <span style="vertical-align: middle;">NEXUS</span>
+    </div>
 
     <nav>
         <a href="#inicio" class="active">INICIO</a>
         <a href="#sobre-nosotros">NOSOTROS</a>
-        <a href="#proyectos">PROYECTOS</a>
+        <a href="#proyectos">SERVICIOS</a>
         <a href="#contacto">CONTACTO</a>
     </nav>
 
