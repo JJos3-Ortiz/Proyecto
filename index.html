@@ -438,76 +438,107 @@
             font-size: 1.2rem;
         }
 
-        .form-futurista {
+        .redes-sociales {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .red-social {
             background: rgba(26, 26, 26, 0.5);
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 20px;
-            border: 1px solid #333;
+            border: 2px solid #333;
             backdrop-filter: blur(10px);
-        }
-
-        .form-group {
-            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             position: relative;
+            overflow: hidden;
         }
 
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 1.2rem;
-            background: transparent;
-            border: none;
-            border-bottom: 2px solid #333;
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-bottom-color: #00ff88;
-        }
-
-        .form-group label {
+        .red-social::before {
+            content: '';
             position: absolute;
-            top: 1.2rem;
-            left: 0;
-            color: #666;
-            transition: all 0.3s;
-            pointer-events: none;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 0;
+            height: 0;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.15) 0%, transparent 70%);
+            transition: all 0.4s;
+            border-radius: 50%;
         }
 
-        .form-group input:focus + label,
-        .form-group textarea:focus + label,
-        .form-group input:not(:placeholder-shown) + label,
-        .form-group textarea:not(:placeholder-shown) + label {
-            top: -1rem;
-            font-size: 0.8rem;
+        .red-social:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .red-social svg {
+            width: 60px;
+            height: 60px;
+            transition: all 0.4s;
+            z-index: 1;
+        }
+
+        .red-social span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #888;
+            transition: all 0.4s;
+            z-index: 1;
+        }
+
+        .red-social:hover {
+            transform: translateY(-10px);
+            border-color: #00ff88;
+            box-shadow: 0 15px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .red-social:hover svg {
+            transform: scale(1.2);
+        }
+
+        .red-social:hover span {
             color: #00ff88;
         }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
+        /* Colores específicos para cada red */
+        .facebook svg {
+            color: #1877f2;
         }
 
-        .submit-btn {
-            width: 100%;
-            padding: 1.5rem;
-            background: linear-gradient(45deg, #00ff88, #00d4ff);
-            border: none;
-            color: #000;
-            font-weight: bold;
-            font-size: 1.1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            clip-path: polygon(5% 0%, 100% 0%, 95% 100%, 0% 100%);
+        .instagram svg {
+            color: #E4405F;
         }
 
-        .submit-btn:hover {
-            transform: scale(1.02);
-            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.4);
+        .tiktok svg {
+            color: #ffffff;
+        }
+
+        .gmail svg {
+            color: #EA4335;
+        }
+
+        .facebook:hover {
+            border-color: #1877f2;
+        }
+
+        .instagram:hover {
+            border-color: #E4405F;
+        }
+
+        .tiktok:hover {
+            border-color: #00f2ea;
+        }
+
+        .gmail:hover {
+            border-color: #EA4335;
         }
 
         /* Footer */
@@ -559,17 +590,17 @@
 <body>
     <div class="particles" id="particles"></div>
     
-    <div class="logo">
-        <img src="IMG/logo-1.png" alt="Logo" style="height: 50px; width: auto; margin-right: 15px; vertical-align: middle;">
-        <span style="vertical-align: middle;">NEXUS</span>
-    </div>
+   <div class="logo">
+    <img src="IMG/logo-1.png" alt="Logo" style="height: 50px; width: auto; margin-right: 15px; vertical-align: middle;">
+    <span style="vertical-align: middle;">NEXUS</span>
+</div>
 
-    <nav>
-        <a href="#inicio" class="active">INICIO</a>
-        <a href="#sobre-nosotros">NOSOTROS</a>
-        <a href="#proyectos">SERVICIOS</a>
-        <a href="#contacto">CONTACTO</a>
-    </nav>
+<nav>
+    <a href="#inicio" class="active">INICIO</a>
+    <a href="#sobre-nosotros">NOSOTROS</a>
+    <a href="#proyectos">SERVICIOS</a>
+    <a href="#contacto">CONTACTO</a>
+</nav>
 
     <section id="inicio">
         <div class="hero-content">
@@ -648,33 +679,43 @@
     <section id="contacto">
         <div class="contacto-container">
             <div class="contacto-header">
-                <h2>HABLEMOS</h2>
-                <p>Convierte tu visión en realidad digital</p>
+                <h2>CONÉCTATE CON NOSOTROS</h2>
+                <p>Síguenos en nuestras redes sociales</p>
             </div>
-            <form class="form-futurista">
-                <div class="form-group">
-                    <input type="text" placeholder=" " required>
-                    <label>Nombre completo</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder=" " required>
-                    <label>Email</label>
-                </div>
-                <div class="form-group">
-                    <input type="tel" placeholder=" ">
-                    <label>Teléfono</label>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder=" " required></textarea>
-                    <label>Cuéntanos tu proyecto</label>
-                </div>
-                <button type="submit" class="submit-btn">ENVIAR MENSAJE</button>
-            </form>
+            <div class="redes-sociales">
+                <a href="https://www.facebook.com" target="_blank" class="red-social facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                    <span>Facebook</span>
+                </a>
+                
+                <a href="https://www.instagram.com" target="_blank" class="red-social instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>Instagram</span>
+                </a>
+                
+                <a href="https://www.tiktok.com" target="_blank" class="red-social tiktok">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+                    </svg>
+                    <span>TikTok</span>
+                </a>
+                
+                <a href="mailto:example@gmail.com" class="red-social gmail">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+                    </svg>
+                    <span>example@gmail.com</span>
+                </a>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>© 2024 NEXUS DIGITAL - INNOVACIÓN SIN LÍMITES</p>
+        <p>© 2025 NEXUS DIGITAL - INNOVACIÓN SIN LÍMITES</p>
     </footer>
 
     <script>
@@ -725,12 +766,7 @@
             });
         });
 
-        // Formulario
-        document.querySelector('.form-futurista').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('¡Mensaje enviado! Nos pondremos en contacto contigo pronto.');
-            this.reset();
-        });
+        // Formulario eliminado - Ahora son enlaces a redes sociales
     </script>
 </body>
 </html>
